@@ -1,0 +1,15 @@
+(function line(depth, number) {
+  var accumulate = 0, nthDigit = 0;
+  while(number) {
+    var count = 0, digit = number % 10;
+    while(digit === number % 10) {
+      number = Math.floor(number/10);
+      count++;
+    }
+    accumulate = accumulate + (count * 10 + digit) * Math.pow(10, nthDigit);
+    nthDigit+=2;
+  }
+  console.log(accumulate);
+  if (--depth) return line(depth, accumulate);
+  else return;
+})(8, 1)
